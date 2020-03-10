@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# This file tags and uploads an image to Docker Hub
+
+# Assumes that an image is built via `run_docker.sh`
+
+# Step 1:
+# Create dockerpath
+# dockerpath=<your docker ID/path>
+dockerpath="ahmed110/udacity"
+
+# Step 2:  
+# Authenticate & tag
+echo "Docker ID and Image: $dockerpath"
+cat ~/mypassword.txt | docker login --username ahmed110 --password-stdin
+docker tag myapp $dockerpath
+
+# Step 3:
+# Push image to a docker repository
+docker push $dockerpath
